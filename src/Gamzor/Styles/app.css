@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-normal font-body;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold font-sans leading-none;
+  }
+}
+
+@layer components {
+  .bg-base-150 {
+    @apply bg-base-200/40;
+  }
+  .main-layout {
+    @apply bg-base-150;
+  }
+
+  .main-page {
+    @apply flex flex-col bg-base-150;
+  }
+
+  .main-page > div:first-child {
+    @apply pt-28 px-8 pb-8 min-h-screen flex flex-col items-center justify-center;
+  }
+  .main-page > div:first-child > div {
+    @apply flex flex-col items-start justify-around gap-y-20 lg:h-[80vh] max-w-[950px];
+  }
+  .main-page > div {
+    @apply w-full px-8 py-20 lg:py-32  flex flex-col items-center even:bg-base-100;
+  }
+  .main-page > div > div {
+    @apply w-full lg:w-[950px] flex flex-col items-center text-center lg:items-start lg:text-left;
+  }
+
+  .pagination-btn {
+    @apply text-base-content/60 disabled:text-base-content/30 enabled:hover:text-primary/90;
+  }
+
+  .card-shadow {
+    @apply shadow-md border border-base-300/70;
+  }
+}
