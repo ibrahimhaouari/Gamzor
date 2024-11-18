@@ -3,16 +3,10 @@ using Microsoft.JSInterop;
 
 namespace Gamzor.Wasm.Services;
 
-public sealed class DarkModeService : IAsyncDisposable
+public sealed class DarkModeService(IJSRuntime jSRuntime, ILocalStorageService localStorageService) : IAsyncDisposable
 {
-    private readonly IJSRuntime jSRuntime = null!;
-    private readonly ILocalStorageService localStorageService = null!;
-
-    public DarkModeService(IJSRuntime jSRuntime, ILocalStorageService localStorageService)
-    {
-        this.jSRuntime = jSRuntime;
-        this.localStorageService = localStorageService;
-    }
+    private readonly IJSRuntime jSRuntime = jSRuntime;
+    private readonly ILocalStorageService localStorageService = localStorageService;
 
     public bool IsDarkMode { get; private set; } = false;
     public EventHandler<bool>? OnDarkModeChanged;
