@@ -6,9 +6,8 @@ export function setTheme(theme) {
 
 export function getTheme() {
     let theme = document.cookie.split('; ').find(row => row.startsWith('theme='))
-    return theme ? theme.split('=')[1] : getSystemTheme()
-}
-
-function getSystemTheme() {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    console.log(theme)
+    return theme ? theme.split('=')[1] :
+    // If no cookie is set, get the system theme
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
