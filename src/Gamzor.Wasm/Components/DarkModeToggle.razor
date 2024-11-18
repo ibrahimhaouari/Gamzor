@@ -30,6 +30,7 @@
 
 </label>
 
+@implements IAsyncDisposable
 @inject IJSRuntime JS
 @code {
 
@@ -53,5 +54,13 @@
     {
         theme = isDarkMode ? "light" : "dark";
         await module!.InvokeVoidAsync("setTheme", theme);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.DisposeAsync();
+        }
     }
 }
