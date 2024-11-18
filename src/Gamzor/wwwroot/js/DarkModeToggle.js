@@ -1,7 +1,7 @@
 export function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme)
     // Add theme cookie
-    document.cookie = `theme=${theme};path=/;max-age=31536000`
+    document.cookie = `theme=${theme};path=/;max-age=31536000;samesite=strict`
 }
 
 export function getTheme() {
