@@ -1,8 +1,6 @@
-@inject Services.DarkModeService DarkModeService
-
 <label class="swap swap-rotate btn btn-ghost btn-circle hover:bg-transparent hover:text-primary">
     <!-- this hidden checkbox controls the state -->
-    <input type="checkbox" checked="@DarkModeService.IsDarkMode" @onchange="DarkModeService.ToggleDarkMode" />
+    <input type="checkbox" checked="@isDarkMode" @onchange="ToggleDarkMode" />
     <!-- sun icon -->
     <svg class="swap-off h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path
@@ -15,12 +13,28 @@
     </svg>
 </label>
 
+@inject IJSRuntime JS
 @code {
-    protected override void OnAfterRender(bool firstRender)
+
+    private IJSObjectReference? module;
+    bool isDarkMode = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            DarkModeService.OnDarkModeChanged += (_, _) => StateHasChanged();
+            Console.WriteLine("First Render");
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/DarkModeToggle.js");
+            var theme = await module.InvokeAsync<string>("getTheme");
+            isDarkMode = theme == "dark";
+            StateHasChanged();
         }
+    }
+
+    private async Task ToggleDarkMode()
+    {
+        isDarkMode = !isDarkMode;
+        var theme = isDarkMode ? "dark" : "light";
+        await module!.InvokeVoidAsync("setTheme", theme);
     }
 }
