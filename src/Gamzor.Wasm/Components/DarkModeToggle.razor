@@ -43,7 +43,6 @@
     {
         if (firstRender)
         {
-            Console.WriteLine("First Render");
             module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/DarkModeToggle.js");
             theme = await module.InvokeAsync<string>("getTheme");
             StateHasChanged();

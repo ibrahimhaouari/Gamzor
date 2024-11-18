@@ -1,6 +1,8 @@
 ﻿@page "/counter"
 <PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
+<div class="flex flex-col w-full h-screen items-center justify-center gap-y-10">
+    <h1>Counter</h1>
 
-<Gamzor.Wasm.Components.Counter @rendermode="InteractiveWebAssembly" />
+    <Gamzor.Wasm.Components.Counter @rendermode="InteractiveWebAssembly" />
+</div>
