@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="@theme">
 
 <head>
     <meta charset="utf-8" />
@@ -22,3 +22,16 @@
 </body>
 
 </html>
+
+@inject IHttpContextAccessor HttpContextAccessor
+@code {
+    string theme = string.Empty;
+    protected override void OnInitialized()
+    {
+        var value = HttpContextAccessor.HttpContext?.Request.Cookies["theme"];
+        if (!string.IsNullOrEmpty(value))
+        {
+            theme = value;
+        }
+    }
+}
