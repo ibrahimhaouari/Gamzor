@@ -1,23 +1,82 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<div class="main-layout">
+    <main class="relative">
+        <div class="fixed top-0 start-0 z-40 bg-base-100 font-sans text-lg font-semibold h-20 w-full shadow-sm
+            flex flex-row items-center justify-between px-8 sm:px-14 py-6">
+            <!-- Logo / Brand Name -->
+            <a href="" class="font-bold text-xl text-nowrap">
+                Gamzor
+            </a>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            @* <div class="ms-auto sm:me-5">
+                <DarkModeToggle />
+            </div> *@
+
+            <button @onclick="ToggleMenu"
+                class="sm:hidden mobile-menu-button p-2 text-base-content/70 hover:text-base-content/90">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    @if (isMenuOpen)
+                    {
+                        <path d="M18 6l-12 12"></path>
+                        <path d="M6 6l12 12"></path>
+                    }
+                    else
+                    {
+                        <path d="M4 6l16 0"></path>
+                        <path d="M4 12l16 0"></path>
+                        <path d="M4 18l16 0"></path>
+                    }
+
+                </svg>
+            </button>
+
+            <ul class="hidden sm:flex flex-row items-center gap-x-5">
+                @foreach (var item in menuItems)
+                {
+                    <li>
+                        <a class="hover:text-primary capitalize" href="@item">@item</a>
+                    </li>
+                }
+            </ul>
         </div>
 
-        <article class="content px-4">
+        <ul class="flex sm:hidden z-30 fixed top-0 start-0 overflow-hidden bg-base-100 h-screen flex-col
+                items-center justify-center space-y-10 text-2xl font-bold
+                transition-all duration-300 transform @(isMenuOpen? "w-full":"w-0")">
+            @foreach (var item in menuItems)
+            {
+                <li>
+                    <a class="hover:text-primary capitalize" href="@item">@item</a>
+                </li>
+            }
+        </ul>
+
+        <div class="flex flex-col w-full min-h-screen justify-between">
             @Body
-        </article>
+            <Footer />
+        </div>
     </main>
 </div>
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+
+
+@code {
+    private readonly string[] menuItems = ["home", "counter"];
+
+    private bool isMenuOpen = false;
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    private void CloseMenu()
+    {
+        if (isMenuOpen)
+        {
+            isMenuOpen = false;
+            StateHasChanged();
+        }
+    }
+}
