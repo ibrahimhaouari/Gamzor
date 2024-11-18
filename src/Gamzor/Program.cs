@@ -1,5 +1,4 @@
 using Gamzor.Components;
-using Gamzor.Wasm.Pages;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +25,6 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(Counter).Assembly);
+    .AddAdditionalAssemblies(typeof(Gamzor.Wasm._Imports).Assembly);
 
 app.Run();
