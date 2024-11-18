@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamzor", "src\Gamzor.csproj", "{0E6CD27A-8C56-4290-A6E1-84E33150EEF8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2ED695EC-5C8A-44E8-8A75-8E24AFDC1B5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamzor", "src\Gamzor\Gamzor.csproj", "{1C533C28-7E36-49E3-8C15-BCFFABFED9D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamzor.Wasm", "src\Gamzor.Wasm\Gamzor.Wasm.csproj", "{2FA1C789-E2B5-42E8-A850-6ABE986BA1A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +18,17 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0E6CD27A-8C56-4290-A6E1-84E33150EEF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E6CD27A-8C56-4290-A6E1-84E33150EEF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E6CD27A-8C56-4290-A6E1-84E33150EEF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E6CD27A-8C56-4290-A6E1-84E33150EEF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C533C28-7E36-49E3-8C15-BCFFABFED9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C533C28-7E36-49E3-8C15-BCFFABFED9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C533C28-7E36-49E3-8C15-BCFFABFED9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C533C28-7E36-49E3-8C15-BCFFABFED9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA1C789-E2B5-42E8-A850-6ABE986BA1A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA1C789-E2B5-42E8-A850-6ABE986BA1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA1C789-E2B5-42E8-A850-6ABE986BA1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA1C789-E2B5-42E8-A850-6ABE986BA1A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1C533C28-7E36-49E3-8C15-BCFFABFED9D4} = {2ED695EC-5C8A-44E8-8A75-8E24AFDC1B5B}
+		{2FA1C789-E2B5-42E8-A850-6ABE986BA1A3} = {2ED695EC-5C8A-44E8-8A75-8E24AFDC1B5B}
 	EndGlobalSection
 EndGlobal
